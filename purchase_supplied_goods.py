@@ -27,16 +27,16 @@ class ProductProduct(osv.osv):
     def search(self, cr, uid, args, offset=0, limit=None, order=None,
             context=None, count=False):
         context = context or {}
-        if context.get('partner_id'):
+        if context.get('seller_id'):
             supplier_info_obj = self.pool.get('product.supplierinfo')
             supplierinfo_ids = supplier_info_obj.search(cr, uid, 
-                    [('name', '=', context['partner_id'])], context=context)
+                    [('name', '=', context['seller_id'])], context=context)
             if supplierinfo_ids:
                 supplied_products = supplier_info_obj.read(cr, uid,
                         supplierinfo_ids, ['product_id'], context=context)
                 product_ids = map(lambda x: x['product_id'][0],
                         supplied_products)
-                args.extend(( '|',('id', 'in', product_ids),
+                args.extend(( '|',('product_tmpl_id', 'in', product_ids),
                     ('seller_ids', '=', None) ))
         return super(ProductProduct, self).search(cr, uid, args, offset, limit,
                 order, context, count)
