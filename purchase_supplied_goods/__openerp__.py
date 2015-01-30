@@ -22,7 +22,7 @@
 
 {
     'name': 'Purchase Supplied Goods',
-    'version': '1.0',
+    'version': '1.1',
     'author': 'Shine IT',
     'website': 'http://www.openerp.cn',
     'category': 'Purchase Management',
@@ -43,7 +43,7 @@
     2. 产品的供应商列表为空的产品
     """,
     'data': [
-        'purchase_supplied_goods_view.xml'
+            'purchase_supplied_goods_view.xml'
     ],
     'installable': True,
     'auto_install': False,
